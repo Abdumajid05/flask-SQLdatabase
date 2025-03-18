@@ -6,41 +6,45 @@ class Smartphone:
         self.cursor = self.connect.cursor()
 
     def sql_get_all_smartphones(self):
+        self.cursor.execute("SELECT * FROM smartphone")
+        return self.cursor.fetchall()
 
-        return
     
     def sql_get_product_by_id(self, id):
-
-        return
+        self.cursor.execute("SELECT * FROM smartphone WHERE id=?", (id,))
+        return self.cursor.fetchall()
     
     def sql_get_smartphone_by_name(self, name):
-
-        return
+        self.cursor.execute("SELECT * FROM smartphone WHERE name=?", (name,))
+        return self.cursor.fetchall()
+        
     
     def sql_get_smartphone_all_names(self):
-
-        return
+        self.cursor.execute("SELECT name FROM smartphone")
+        return self.cursor.fetchall()
+        
     
     def sql_get_smartphone_by_color(self, color):
-
-        return
+        self.cursor.execute("SELECT * FROM smartphone WHERE color=?", (color,))
+        return self.cursor.fetchall()
     
     def sql_get_smartphone_by_ram(self, ram):
-
-        return
+        self.cursor.execute("SELECT * FROM smartphone WHERE ram=?", (ram,))
+        return self.cursor.fetchall()
     
     def sql_get_smartphone_by_memory(self, memory):
-
-        return
+        self.cursor.execute("SELECT * FROM smartphone WHERE memory=?", (memory,))
+        return self.cursor.fetchall()
     
     def sql_get_smartphone_by_price(self, price):
-
-        return
-    
+        self.cursor.execute("SELECT * FROM smartphone WHERE price=?", (price,))
+        return self.cursor.fetchall()
+        
     def sql_add_smartphone(self, phone):
-
-        return
+        self.cursor.execute("INSERT INTO smartphone (name, color, ram, memory, price) VALUES (?,?,?,?,?)", (phone.name, phone.color, phone.ram, phone.memory, phone.price))
+        return self.connect.commit()
+       
     
     def sql_delete_smartphone(self, id):
-
-        return 
+        self.cursor.execute("DELETE FROM smartphone WHERE id=?", (id,))
+        return  self.connect.commit()
